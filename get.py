@@ -13,10 +13,12 @@ transcript_list = YouTubeTranscriptApi.list_transcripts(qsl["v"][0])
 
 for x in transcript_list:
     text = x.fetch()
+    print(text)
 
-for x in text:
-    if key in x['text']:
-        print(f"text: {x['text']}, start: {int(x['start'])}")
+
+#for x in text:
+#    if key in x['text']:
+#        print(f"text: {x['text']}, start: {int(x['start'])}")
 
 
 

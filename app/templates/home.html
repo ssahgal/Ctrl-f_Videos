@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block css %}
+    <link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="search-container">
+        <h3>Ctrlf Videos</h3>
+        <div class="form-container">
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <dir lass="form-group">
+                        {{ form.youtube_link.label(class="form-control-label") }}
+                        
+                        {% if form.youtube_link.errors %}
+                            {{ form.youtube_link(class="form-control form-control-lg is-invalid") }} 
+                            <div class="invalid-feedback">
+                                {% for error in form.youtube_link.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.youtube_link(class="form-control form-control-lg") }}
+                        {% endif %}
+
+                    </dir>
+                    <dir lass="form-group">
+                        {{ form.keyword.label(class="form-control-label") }}
+                        
+                        {% if form.keyword.errors %}
+                            {{ form.keyword(class="form-control form-control-lg is-invalid") }} 
+                            <div class="invalid-feedback">
+                                {% for error in form.keyword.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.keyword(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </dir>
+                </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </form>
+        </div>
+        
+        {% if submission %}
+            <table>
+                <tr>
+                    <th>Text</th>
+                    <th>Time (seconds)</th>
+                    <th>Link</th>
+                </tr>
+                {% for x in data %}
+                    {% if keyword[0] in x['text'] %}
+                        <tr>
+                            <th>{{ x['text'] }}</th>
+                            <th>{{ x['start'] | int }}</th>
+                            <th><a href="{{ x['link'] }}">Link</a></th>
+                        </tr> 
+                    {% endif %}
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+
+{% endblock %}
