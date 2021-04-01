@@ -5,13 +5,13 @@
 {% endblock %}
 
 {% block content %}
-    <div class="search-container">
-        <h3>Ctrlf Videos</h3>
-        <div class="form-container">
-            <form method="POST" action="">
+    <div>
+        <div class="d-flex justify-content-center">
+            <form method="POST" action="" align="center">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
-                    <dir lass="form-group">
+                    <legend class="border-bottom mb-4">Ctrlf Videos</legend>
+                    <div class="form-group">
                         {{ form.youtube_link.label(class="form-control-label") }}
                         
                         {% if form.youtube_link.errors %}
@@ -24,9 +24,9 @@
                         {% else %}
                             {{ form.youtube_link(class="form-control form-control-lg") }}
                         {% endif %}
-
-                    </dir>
-                    <dir lass="form-group">
+                    </div>
+                    <br>
+                    <div class="form-group">
                         {{ form.keyword.label(class="form-control-label") }}
                         
                         {% if form.keyword.errors %}
@@ -39,33 +39,40 @@
                         {% else %}
                             {{ form.keyword(class="form-control form-control-lg") }}
                         {% endif %}
-                    </dir>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
                 </fieldset>
-                <div class="form-group">
-                    {{ form.submit(class="btn btn-outline-info") }}
-                </div>
             </form>
         </div>
-        
-        {% if submission %}
-            <table>
-                <tr>
-                    <th>Text</th>
-                    <th>Time (seconds)</th>
-                    <th>Link</th>
-                </tr>
-                {% for x in data %}
-                    {% if keyword[0] in x['text'] %}
-                        <tr>
-                            <th>{{ x['text'] }}</th>
-                            <th>{{ x['start'] | int }}</th>
-                            <th><a href="{{ x['link'] }}">Link</a></th>
-                        </tr> 
-                    {% endif %}
-                {% endfor %}
-            </table>
-
-        {% endif %}
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                {% if submission %}
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col">Text</th>
+                                <th scope="col">Time (seconds)</th>
+                                <th scope="col">Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for x in data %}
+                                {% if keyword[0] in x['text'] %}
+                                    <tr>
+                                        <td>{{ x['text'] }}</td>
+                                        <td>{{ x['start'] | int }}</td>
+                                        <td><a href="{{ x['link'] }}" target="_blank">Link</a></td>
+                                    </tr> 
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
     </div>
 
 {% endblock %}
