@@ -52,10 +52,16 @@ def home():
 
     return render_template(
                 'home.html',
-                title="CtrlfVideos",
+                title="Ctrlf Videos",
                 description="Ctrlf On Videos.",
                 form=form,
                 keyword=keyword,
                 data=data,
                 submission=submission
             )
+
+
+@app.route('/about', methods=['GET', 'POST'])
+def about():
+    
+    return render_template("about.html", title="About")

@@ -5,12 +5,13 @@
 {% endblock %}
 
 {% block content %}
-    <div>
+    <div class="container">
         <div class="d-flex justify-content-center">
             <form method="POST" action="" align="center">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Ctrlf Videos</legend>
+                    <!-- <legend class="border-bottom mb-4">Ctrlf Videos</legend> -->
+                    <br>
                     <div class="form-group">
                         {{ form.youtube_link.label(class="form-control-label") }}
                         
