@@ -1,6 +1,6 @@
 from app import app
 
-from flask import request, render_template, flash
+from flask import request, render_template, flash, abort
 from .forms import controlf
 from urllib import parse
 from youtube_transcript_api import YouTubeTranscriptApi
@@ -42,8 +42,13 @@ def home():
                     if key in x['text']:
                         submission.append(1)
 
+                if not submission:
+                    flash('There are no matches to this keyword on the video!', 'danger')
+                else:    
+                    flash(f'We found {len(submission)} matches to this keyword on the video!', 'success')
+
             else: 
-                flash('Error trying to get the link!')
+                flash('Error trying to get the link!', 'danger')
 
     return render_template(
                 'home.html',

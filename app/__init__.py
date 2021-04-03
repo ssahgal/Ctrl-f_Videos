@@ -13,3 +13,4 @@ else:
 
 from app import views
 from app import forms
+from app import error_handlers
