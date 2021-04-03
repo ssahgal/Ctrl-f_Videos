@@ -9,6 +9,6 @@ If you have any contributions or ideas that could improve the website feel free 
 pull request.
 
 
-Info:
-Email: pedroceduca@gmail.com
-Donations: 0x0bDBB78F95e4Bdd568257aA62FA4e155Fa4D93c2 
+Info:\
+Email: pedroceduca@gmail.com\
+Donations: 0x0bDBB78F95e4Bdd568257aA62FA4e155Fa4D93c2
