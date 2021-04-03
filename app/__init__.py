@@ -1,8 +1,14 @@
 from flask import Flask
 
 app = Flask(__name__)
-app.config['FLASK_ENV'] = 'development'
-app.config['SECRET_KEY'] = 'GJ6ifT6TSU'
+
+# Config env by using: export FLASK_APP='{env}'
+if app.config["ENV"] == 'production':
+    # Using a production configuration
+    app.config.from_object("config.ProductionConfig")
+else:
+    #Using a development configuration
+    app.config.from_object("config.DevelopmentConfig")
 
 
 from app import views
